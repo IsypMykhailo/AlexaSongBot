@@ -10,9 +10,9 @@ from AlexaSongBot.mrdarkprince import ignore_blacklisted_users
 from AlexaSongBot.sql.chat_sql import add_chat_to_db
 
 start_text = """
-Hey [{}](tg://user?id={}),
-I'm Alexa 🤗
-Just send me the song name you want to download.
+Приветствую, [{}](tg://user?id={}),
+Я МУЗЫКАНТ 🤗
+Просто отправь мне имя песни, которую ты хочешь найти.
 Eg: ```/song Faded Alan Walker```
 """
 
@@ -30,19 +30,19 @@ async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
-    if message.chat.type == "private":
-        btn = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="🔳 Source Code 🔳", url="https://github.com/Mr-Dark-Prince/AlexaSongBot"
-                    )
-                ]
-            ]
-        )
-    else:
-        btn = None
-    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    #if message.chat.type == "private":
+        #btn = InlineKeyboardMarkup(
+            #[
+                #[
+                    #InlineKeyboardButton(
+                        #text="🔳 Source Code 🔳", url="https://github.com/Mr-Dark-Prince/AlexaSongBot"
+                    #)
+                #]
+            #]
+        #)
+    #else:
+        #btn = None
+    #await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
